@@ -1,6 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 
 export function checkTokenInfo() {
+   if (typeof window === "undefined") {
+    // Server-side: no localStorage
+    return null;
+  }1
   const token = localStorage.getItem("accessToken");
   if (!token) return null;
 

@@ -9,5 +9,5 @@ export const useProvider = () => {
     localStorage.removeItem("accessToken");
     window.location.href = "/login";
   }
-  return {loginWithGoogle,logout}
+  return {loginWithGoogle,logout,provider}
 }

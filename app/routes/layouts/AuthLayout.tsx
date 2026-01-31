@@ -11,7 +11,7 @@ export default function AuthLayoutRoute() {
 // checkTokenInfo()
 // console.log(checkTokenInfo())
   return (
-    <div className="auth-layout bg-red-400 min-h-screen">
+    <div className="auth-layout min-h-screen">
       <Outlet />
     </div>
   )

@@ -17,15 +17,9 @@ export default [
     file: "routes/layouts/AuthLayout.tsx",
     path: "/",
     children: [
-      // Dashboard route
       {
         index: true,
-        file: "routes/Dashboard.tsx",
-      },
-      // User route
-      {
-        path: "/user",
-        file: "routes/User.tsx",
+        file: "routes/ChatApp.tsx",
       },
       // Catch-all route for 404 Not Found
       {
