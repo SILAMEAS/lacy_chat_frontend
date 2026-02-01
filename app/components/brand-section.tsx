@@ -1,4 +1,3 @@
-import React from "react"
 import { MessageCircle, Users, Zap } from 'lucide-react'
 
 export default function BrandSection() {

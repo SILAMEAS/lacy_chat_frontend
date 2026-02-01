@@ -1,4 +1,4 @@
-import { Navigate, Outlet, redirect } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { useAppSelector } from "~/redux/hooks/useRedux";
 
 export default function AuthLayout() {
