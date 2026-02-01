@@ -1,16 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface ChatState {
+export interface ChatState {
   messages: string[];
+  loading: boolean;
 }
 
 const initialState: ChatState = {
   messages: [],
+  loading: false,
 };
 
 const chatSlice = createSlice({
-  name: 'chat',
+  name: "chat",
   initialState,
   reducers: {
     addMessage: (state, action: PayloadAction<string>) => {
