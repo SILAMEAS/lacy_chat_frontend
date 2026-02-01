@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import type { Route } from "./+types/OAuth2Success";
 import { useNavigate } from "react-router";
+import { setTokens } from "~/redux/slice/userSlice";
+import { useAppDispatch } from "~/redux/hooks/useRedux";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,25 +13,29 @@ export function meta({}: Route.MetaArgs) {
 
 export default function OAuth2Success() {
   const navigate = useNavigate();
-
+  // const {setToken}=useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     // 1. Read token from URL
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
 
-    if (token) {
-      // 2. Store token (DEV: localStorage)
-      localStorage.setItem("accessToken", token);
-
-      // 3. Remove token from URL
-      window.history.replaceState({}, document.title, "/");
-
-      // 4. Redirect to dashboard
-      navigate("/");
-    } else {
-      navigate("/login");
+    if (!token) {
+      navigate("/login", { replace: true });
+      return;
     }
-  }, [navigate]);
+
+    // 1️⃣ Store token (memory)
+    console.log("OAuth2 token:", token);
+    dispatch(setTokens({ accessToken: token, refreshToken: "" }));
+
+    // 2️⃣ Clean URL (VERY IMPORTANT)
+    window.history.replaceState({}, "", "/");
+
+
+    // 4️⃣ Continue app
+    navigate("/", { replace: true });
+  }, []);
 
   return <p>Logging you in...</p>;
 }

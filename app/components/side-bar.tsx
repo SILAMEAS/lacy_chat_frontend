@@ -3,7 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 // import { Button } from '@/components/ui/button'
 import { Input } from './ui/input'
 import { Button } from './ui/button';
-import { useProvider } from '~/lib/hooks/useProvider';
+import { useAppDispatch } from '~/redux/hooks/useRedux';
+import { logout } from '~/redux/slice/userSlice';
 
 interface Conversation {
   id: string
@@ -66,7 +67,7 @@ export function Sidebar({
   selectedConversation,
   onSelectConversation,
 }: SidebarProps) {
-  const {logout} = useProvider();
+  const dispatch = useAppDispatch();
   return (
     <div className="w-80 max-w-sm flex flex-col bg-white border-r border-gray-200 shadow-sm">
       {/* Header */}
@@ -130,7 +131,7 @@ export function Sidebar({
           </button>
         ))}
       </div>
-            <button onClick={logout}>Logout</button>
+            <Button onClick={() => dispatch(logout())}>Logout</Button>
     </div>
   )
 }

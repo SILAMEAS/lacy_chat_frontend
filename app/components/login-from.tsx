@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from './ui/button'
-import { Chrome } from 'lucide-react'
-import { useProvider } from '~/lib/hooks/useProvider'
+import { UimGoogle } from 'public/icon/UimGoogle'
+import { useProvider } from '~/utils/hooks/useProvider'
 
 interface LoginFormProps {
   isLoading: boolean
@@ -29,8 +29,8 @@ export default function LoginForm({
       size="lg"
       className="w-full h-12 bg-white hover:bg-slate-50 text-foreground border-2 border-border shadow-sm hover:shadow-md transition-all"
     >
-      <Chrome className="w-5 h-5 mr-2" />
-      {isLoading ? 'Signing in...' : 'Sign in with Google'}
+      <UimGoogle className="w-5 h-5 mr-2" />
+      {isLoading ? 'Signing in...' : 'Continue With Google'}
     </Button>
   )
 }

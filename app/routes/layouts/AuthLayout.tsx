@@ -1,13 +1,7 @@
-import { Navigate, Outlet } from "react-router"
-import { checkTokenInfo } from "~/lib/utils/checkTokenInfo"
+import { Navigate, Outlet, redirect } from "react-router";
+import { useAppSelector } from "~/redux/hooks/useRedux";
 
-export default function AuthLayoutRoute() {
-  if (!checkTokenInfo()) {
-    return <Navigate to="/login" replace />
-  }
-  return (
-    <div className="auth-layout min-h-screen">
-      <Outlet />
-    </div>
-  )
+export default function AuthLayout() {
+  const accessToken = useAppSelector((state) => state.user.accessToken);
+  return accessToken ? <Outlet /> : <Navigate to="/login" replace />;
 }

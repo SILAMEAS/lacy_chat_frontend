@@ -1,7 +1,6 @@
 
 import BrandSection from "~/components/brand-section";
 import type { Route } from "./+types/Login";
-import { useProvider } from "~/lib/hooks/useProvider";
 import LoginForm from "~/components/login-from";
 import { useState } from "react";
 
@@ -24,7 +23,7 @@ export default function LoginPage() {
         <div className="w-full max-w-sm">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-balance">
-              Welcome to ChatApp
+              Welcome to {import.meta.env.VITE_APP_NAME}
             </h1>
             <p className="text-muted-foreground">
               Sign in with your Google account to get started

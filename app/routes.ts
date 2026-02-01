@@ -1,5 +1,7 @@
 import { type RouteConfig } from "@react-router/dev/routes";
 
+
+
 export default [
   // Unauthenticated routes
   {
@@ -13,19 +15,12 @@ export default [
   },
 
   // Authenticated layout
-  {
-    file: "routes/layouts/AuthLayout.tsx",
-    path: "/",
-    children: [
-      {
-        index: true,
-        file: "routes/ChatApp.tsx",
-      },
-      // Catch-all route for 404 Not Found
-      {
-        path: "*",
-        file: "routes/NotFound.tsx",
-      },
-    ],
-  },
+ {
+  file: "routes/layouts/AuthLayout.tsx",
+  path: "/",
+  children: [
+    { index: true, file: "routes/ChatApp.tsx" },
+    { path: "*", file: "routes/NotFound.tsx" },
+  ],
+}
 ] satisfies RouteConfig;
